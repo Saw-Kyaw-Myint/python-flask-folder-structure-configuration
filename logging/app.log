@@ -1,5 +1,0 @@
-[2026-01-07 16:12:42,000] INFO in auth_controller: hla
-[2026-01-07 16:12:42,000] ERROR in handler: Unhandled Exception: You must call `@jwt_required()` or `verify_jwt_in_request()` before using this method
-[2026-01-07 16:13:04,394] INFO in auth_controller: hla
-[2026-01-07 16:13:04,394] ERROR in handler: Unhandled Exception: You must call `@jwt_required()` or `verify_jwt_in_request()` before using this method
-[2026-01-07 16:18:34,706] INFO in auth_controller: hla
