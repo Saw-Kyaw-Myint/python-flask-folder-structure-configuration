@@ -32,6 +32,34 @@ No need to configure following basic requirement and support example code.
 - Migration version
 - Json Response Format
 
+## Setup Instructions
+
+### 1. Clone the repository
+
+```bash
+$ git https://github.com/Saw-Kyaw-Myint/python-flask-folder-structure-configuration.git
+$ cd python-flask-folder-structure-configuration
+```
+
+### 2. Install dependencies
+
+```
+$ pip install poetry
+$ poetry install --no-root
+```
+
+### 3. Activate the virtual environment
+
+```
+$ poetry shell
+```
+
+### 4. Run the Flask application
+
+```
+$ flask run
+```
+
 ## Reference
 
 https://www.digitalocean.com/community/tutorials/how-to-perform-flask-sqlalchemy-migrations-using-flask-migrate
