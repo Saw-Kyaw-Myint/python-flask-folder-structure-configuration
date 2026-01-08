@@ -37,24 +37,35 @@ No need to configure following basic requirement and support example code.
 ### 1. Clone the repository
 
 ```bash
-$ git https://github.com/Saw-Kyaw-Myint/python-flask-folder-structure-configuration.git
+$ git clone https://github.com/Saw-Kyaw-Myint/python-flask-folder-structure-configuration.git
+
 $ cd python-flask-folder-structure-configuration
 ```
 
 ### 2. Install dependencies
 
 ```
+// if  had installed poetry, can skip this command
 $ pip install poetry
+
 $ poetry install --no-root
 ```
 
 ### 3. Activate the virtual environment
 
 ```
-$ poetry shell
+$ poetry env activate
+
+$ poetry env list
 ```
 
-### 4. Run the Flask application
+### 4. Copy .env.example to .env
+
+```
+$ cp .env.example .env
+```
+
+### 5. Run the Flask application
 
 ```
 $ flask run

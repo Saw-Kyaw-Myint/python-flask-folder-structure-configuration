@@ -30,7 +30,6 @@ def get_users():
             - 200 OK with a list of all users
     """
     users = User.query.all()
-    logger.error("Hello get_users call")
     return jsonify(users_schema.dump(users)), 200
 
 
