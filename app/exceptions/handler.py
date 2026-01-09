@@ -2,7 +2,9 @@
 from flask import jsonify
 from pydantic import ValidationError
 from sqlalchemy.exc import SQLAlchemyError
+
 from config.logging import logger  # or your global logger
+
 
 def register_error_handlers(app):
     """
@@ -36,7 +38,7 @@ def register_error_handlers(app):
     Returns:
         None
     """
-    
+
     @app.errorhandler(ValidationError)
     def handle_validation_error(e):
         """Handle Pydantic validation errors."""
@@ -46,7 +48,7 @@ def register_error_handlers(app):
                 "input": err.get("input", None),
                 "loc": err.get("loc", []),
                 "msg": err.get("msg", ""),
-                "type": err.get("type", "")
+                "type": err.get("type", ""),
             }
             for err in e.errors()
         ]

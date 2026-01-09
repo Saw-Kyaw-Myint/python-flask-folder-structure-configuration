@@ -1,6 +1,7 @@
 # app/request/user_request.py
 from pydantic import BaseModel, EmailStr, Field
 
+
 class UserCreateRequest(BaseModel):
     """
     Schema for validating user creation requests.
@@ -11,12 +12,13 @@ class UserCreateRequest(BaseModel):
     Attributes:
         name (str): Name of the user. Must be between 3 and 50 characters.
         email (EmailStr): Valid email address for the user.
-    
+
     Example JSON payload:
         {
             "name": "John Doe",
             "email": "john@example.com"
         }
     """
+
     name: str = Field(..., min_length=3, max_length=50)
     email: EmailStr

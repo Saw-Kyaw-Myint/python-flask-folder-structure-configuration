@@ -1,5 +1,6 @@
 from app.extension import db
 
+
 class User(db.Model):
     """
     Represents a user in the application.
@@ -23,11 +24,7 @@ class User(db.Model):
     profile = db.Column(db.String(100), nullable=True)
     email = db.Column(db.String(120), unique=True, nullable=False)
 
-    posts = db.relationship(
-        "Post",
-        back_populates="user",
-        cascade="all, delete-orphan"
-    )
+    posts = db.relationship("Post", back_populates="user", cascade="all, delete-orphan")
 
     def __repr__(self):
         """

@@ -1,6 +1,7 @@
 # app/helpers/validation.py
 from pydantic import ValidationError
 
+
 def format_pydantic_errors(exc: ValidationError):
     """
     Format Pydantic validation errors into a simplified list of dictionaries.
@@ -14,7 +15,7 @@ def format_pydantic_errors(exc: ValidationError):
 
     Returns:
         List[dict]: A list of dictionaries representing the formatted errors.
-    
+
     Example:
         [
             {"field": "user.email", "message": "value is not a valid email"},
@@ -23,10 +24,9 @@ def format_pydantic_errors(exc: ValidationError):
     """
     formatted_errors = []
     for err in exc.errors():
-        formatted_errors.append({
-            "field": ".".join(str(loc) for loc in err["loc"]),
-            "message": err["msg"]
-        })
+        formatted_errors.append(
+            {"field": ".".join(str(loc) for loc in err["loc"]), "message": err["msg"]}
+        )
     return formatted_errors
 
 
@@ -43,6 +43,7 @@ def before_middleware(bp, middleware):
     Returns:
         None
     """
+
     @bp.before_request
     def _middleware():
         return middleware()
@@ -56,12 +57,13 @@ def after_middleware(bp, middleware):
 
     Args:
         bp (Blueprint): The Flask Blueprint instance.
-        middleware (Callable): A function to execute after each request. 
+        middleware (Callable): A function to execute after each request.
                                Must accept a response argument if needed.
 
     Returns:
         None
     """
+
     @bp.after_request
     def _middleware(response):
         # Pass the response to the middleware

@@ -11,9 +11,13 @@
 - Flask-cors
 - Flask-Limiter
 - Flask-JWT-Extended
+- Flask-Bcrypt
+- Flask-Socketio
+- Black
+- Isort
 ```
 
-## Support feature
+## Support
 
 Support Minimum feature for small `Api` project.<br>
 No need to configure following basic requirement and support example code.
@@ -31,6 +35,7 @@ No need to configure following basic requirement and support example code.
 - Object-Relational Mapping
 - Migration version
 - Json Response Format
+- Python File Formatting
 
 ## Setup Instructions
 
@@ -71,12 +76,18 @@ $ cp .env.example .env
 $ flask run
 ```
 
-## Reference
+### Run Format
+
+```
+$ py format
+```
+
+## <u>Reference</u>
 
 https://www.digitalocean.com/community/tutorials/how-to-perform-flask-sqlalchemy-migrations-using-flask-migrate
 
 ---
 
-Project Reference
+## <u>Project Reference</u>
 
 https://github.com/demoskp/flask-marshmallow-tutorial/blob/master/poetry.lock

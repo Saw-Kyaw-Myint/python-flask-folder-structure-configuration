@@ -1,6 +1,8 @@
 from marshmallow import fields
-from app.models import User
+
 from app.extension import ma
+from app.models import User
+
 
 class UserSchema(ma.SQLAlchemyAutoSchema):
     """

@@ -32,27 +32,32 @@ Usage:
 """
 
 import os
+
 from dotenv import load_dotenv
 
 # Load environment variables from .env file
 load_dotenv()
 
+
 class DatabaseConfig:
     """
     Centralized database configuration for Flask and SQLAlchemy.
     """
+
     # Secret key
-    SECRET_KEY = os.getenv('SECRET_KEY', 'dev_secret')
+    SECRET_KEY = os.getenv("SECRET_KEY", "dev_secret")
 
     # MySQL connection parameters
-    DB_USER = os.getenv('DB_USER', 'root')
-    DB_PASSWORD = os.getenv('DB_PASSWORD', 'root')
-    DB_HOST = os.getenv('DB_HOST', 'localhost')
-    DB_PORT = os.getenv('DB_PORT', '3306')
-    DB_NAME = os.getenv('DB_NAME', 'flask_db')
+    DB_USER = os.getenv("DB_USER", "root")
+    DB_PASSWORD = os.getenv("DB_PASSWORD", "root")
+    DB_HOST = os.getenv("DB_HOST", "localhost")
+    DB_PORT = os.getenv("DB_PORT", "3306")
+    DB_NAME = os.getenv("DB_NAME", "flask_db")
 
     # SQLAlchemy connection URI
-    SQLALCHEMY_DATABASE_URI = f"mysql+pymysql://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
+    SQLALCHEMY_DATABASE_URI = (
+        f"mysql+pymysql://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
+    )
 
     # Disable track modifications to save resources
     SQLALCHEMY_TRACK_MODIFICATIONS = False

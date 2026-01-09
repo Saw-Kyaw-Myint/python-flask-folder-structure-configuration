@@ -24,15 +24,18 @@ Usage:
 """
 
 import os
+
 from dotenv import load_dotenv
 
 # Load environment variables from .env
 load_dotenv()
 
+
 class JWTConfig:
     """
     Centralized JWT configuration for Flask-JWT-Extended.
     """
+
     JWT_SECRET_KEY = os.environ.get("JWT_SECRET_KEY", "fallback_secret")
     JWT_ACCESS_TOKEN_EXPIRES = int(os.environ.get("JWT_ACCESS_TOKEN_EXPIRES", 3600))
     JWT_REFRESH_TOKEN_EXPIRES = int(os.environ.get("JWT_REFRESH_TOKEN_EXPIRES", 86400))

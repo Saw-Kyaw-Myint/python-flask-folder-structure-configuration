@@ -1,5 +1,6 @@
 from app.extension import db
 
+
 class Post(db.Model):
     """
     Represents a blog post or user-generated content in the database.

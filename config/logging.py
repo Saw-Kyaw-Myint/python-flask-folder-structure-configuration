@@ -3,7 +3,7 @@ config/logging.py
 
 Logging configuration for the Flask application.
 
-This module sets up a global logger that writes log messages to a 
+This module sets up a global logger that writes log messages to a
 rotating file and allows attaching it to a Flask app. It ensures
 persistent logging with file rotation to avoid large log files.
 
@@ -23,8 +23,8 @@ Usage:
     setup_logging(app)
 """
 
-import os
 import logging
+import os
 from logging.handlers import RotatingFileHandler
 
 # Set project root as base directory
@@ -37,7 +37,7 @@ logger = logging.getLogger("myapp_logger")
 logger.setLevel(logging.INFO)
 
 log_file = os.path.join(LOG_DIR, "app.log")
-handler = RotatingFileHandler(log_file, maxBytes=5*1024*1024, backupCount=5)
+handler = RotatingFileHandler(log_file, maxBytes=5 * 1024 * 1024, backupCount=5)
 formatter = logging.Formatter("[%(asctime)s] %(levelname)s in %(module)s: %(message)s")
 handler.setFormatter(formatter)
 logger.addHandler(handler)

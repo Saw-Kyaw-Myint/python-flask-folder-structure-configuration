@@ -1,11 +1,12 @@
-from flask import request, jsonify, current_app
+from flask import current_app, jsonify, request
 from pydantic import ValidationError
-from app.models import User
-from app.schema.user_schema import UserSchema
-from app.request.user_request import UserCreateRequest
-from app.helpers.commons import format_pydantic_errors
-from config.logging import logger
+
 from app.extension import db
+from app.helpers.commons import format_pydantic_errors
+from app.models import User
+from app.request.user_request import UserCreateRequest
+from app.schema.user_schema import UserSchema
+from config.logging import logger
 
 # Schemas
 users_schema = UserSchema(many=True)
@@ -66,10 +67,15 @@ def create_user():
         data = UserCreateRequest.model_validate(request.json)
     except ValidationError as e:
         return jsonify({"errors": format_pydantic_errors(e)}), 400
-    
+
     existing_user = User.query.filter_by(email=data.email).first()
     if existing_user:
-        return jsonify({"errors": [{"field": "email", "message": "Email already exists"}]}), 400
+        return (
+            jsonify(
+                {"errors": [{"field": "email", "message": "Email already exists"}]}
+            ),
+            400,
+        )
 
     # Create user
     user = User(name=data.name, email=data.email)

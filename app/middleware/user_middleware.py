@@ -1,4 +1,5 @@
-from flask import request, jsonify
+from flask import jsonify, request
+
 
 def user_middleware():
     """

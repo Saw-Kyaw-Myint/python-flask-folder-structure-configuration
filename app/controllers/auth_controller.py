@@ -1,11 +1,18 @@
-from flask import request, jsonify
-from app.models import User
+from flask import jsonify, request
+from flask_jwt_extended import (
+    create_access_token,
+    create_refresh_token,
+    get_jwt,
+    jwt_required,
+)
+
 from app.extension import db
-from flask_jwt_extended import create_access_token, create_refresh_token, jwt_required, get_jwt
+from app.models import User
 from app.schema.user_schema import UserSchema
 from config.logging import logger
 
 user_schema = UserSchema(many=False)
+
 
 def login_user():
     """
@@ -38,13 +45,12 @@ def login_user():
     user_data = user_schema.dump(user)
 
     # Create access token with user info as additional claims
-    access_token = create_access_token(identity=str(user.id), additional_claims={"user": user_data})
+    access_token = create_access_token(
+        identity=str(user.id), additional_claims={"user": user_data}
+    )
     refresh_token = create_refresh_token(identity=user.id)
 
-    return jsonify({
-        "access_token": access_token,
-        "refresh_token": refresh_token
-    }), 200
+    return jsonify({"access_token": access_token, "refresh_token": refresh_token}), 200
 
 
 @jwt_required()
@@ -64,7 +70,7 @@ def get_me():
         Response (JSON):
             - 200 OK with "user" key containing the current user's data
     """
-    logger.info('hla')
+    logger.info("hla")
     claims = get_jwt()
     user_info = claims.get("user")  # get full user dict
     return jsonify({"user": user_info}), 200
