@@ -36,6 +36,8 @@ No need to configure following basic requirement and support example code.
 - Migration version
 - Json Response Format
 - Python File Formatting
+- Soft delete
+- Fake Data (Factories)
 
 ## Setup Instructions
 
