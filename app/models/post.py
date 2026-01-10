@@ -25,11 +25,7 @@ class Post(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
     user = db.relationship("User", back_populates="posts")
 
-    def __repr__(self):
-        """
-        Return a string representation of the Post instance.
 
-        Returns:
-            str: Formatted as "<Post {title}>"
-        """
-        return f"<Post {self.title}>"
+# shorthand add fields
+db.timeStamp(Post)
+db.softDelete(Post)

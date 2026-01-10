@@ -22,3 +22,7 @@ class UserCreateRequest(BaseModel):
 
     name: str = Field(..., min_length=3, max_length=50)
     email: EmailStr
+
+class UserUpdateRequest(BaseModel):
+    name: str = Field(None, min_length=3, max_length=50)
+    email: EmailStr

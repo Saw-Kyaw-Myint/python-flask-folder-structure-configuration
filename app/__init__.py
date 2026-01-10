@@ -3,7 +3,8 @@ from flask_cors import CORS
 from flask_jwt_extended import JWTManager
 
 from app.exceptions.handler import register_error_handlers
-from app.extension import bcrypt, db, limiter, ma, migrate, socketio
+from app.extension import  db, limiter, ma, migrate
+from app.cli import register_commands
 from config.cors import CORS_CONFIG
 from config.database import DatabaseConfig
 from config.jwt import JWTConfig
@@ -13,6 +14,7 @@ app = Flask(__name__)
 
 # ///// implement log ///////////////
 setup_logging(app)
+register_commands(app)
 
 # ///// implement cors /////////////////
 CORS(app, **CORS_CONFIG)
@@ -26,14 +28,16 @@ db.init_app(app)
 migrate.init_app(app, db)
 limiter.init_app(app)
 ma.init_app(app)
-bcrypt.init_app(app)
-socketio.init_app(app)
 
 # JWT
 jwt = JWTManager(app)
 
 # ///////////////// implement web /////////
 import route.api as routes
+
+@app.route('/')
+def initialRoute():
+    return "<h1 style='text-align: center; margin-top:250px; font-size: 60px;'>Hello World</p>"
 
 # /////// implement models ////////////////
 from app.models import *

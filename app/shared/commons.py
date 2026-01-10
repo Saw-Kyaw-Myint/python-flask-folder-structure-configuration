@@ -1,6 +1,20 @@
-# app/helpers/validation.py
 from pydantic import ValidationError
+from flask import request, jsonify
+from functools import wraps
 
+
+def validate_request(schema):
+    def decorator(fn):
+        @wraps(fn)
+        def wrapper(*args, **kwargs):
+            try:
+                payload = schema.model_validate(request.json)
+            except ValidationError as e:
+                return jsonify({"errors": format_pydantic_errors(e)}), 401
+
+            return fn(payload, *args, **kwargs)
+        return wrapper
+    return decorator
 
 def format_pydantic_errors(exc: ValidationError):
     """
