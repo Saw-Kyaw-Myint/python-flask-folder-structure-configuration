@@ -2,6 +2,7 @@
 from app.extension import db
 from app.utils.decorators import static_all_methods
 
+
 @static_all_methods
 class BaseFactory:
 

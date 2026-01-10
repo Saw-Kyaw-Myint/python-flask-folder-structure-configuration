@@ -1,6 +1,7 @@
-from app.models import User
-from app.extension import db
 from app.dao.base_dao import BaseDao
+from app.extension import db
+from app.models import User
+
 
 class UserDao(BaseDao):
     """Handles direct database operations"""

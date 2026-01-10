@@ -1,7 +1,8 @@
 # app/factories/user_factory.py
 from faker import Faker
-from app.models import User
+
 from app.factories.base_factory import BaseFactory
+from app.models import User
 
 fake = Faker()
 
@@ -9,7 +10,7 @@ fake = Faker()
 class UserFactory:
 
     def make():
-            return User(
+        return User(
             name=fake.name(),
             email=fake.unique.email(),
         )

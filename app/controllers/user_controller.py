@@ -1,6 +1,6 @@
-from flask import request, jsonify
+from flask import jsonify, request
 
-from app.request.user_request import UserCreateRequest,UserUpdateRequest
+from app.request.user_request import UserCreateRequest, UserUpdateRequest
 from app.schema.user_schema import UserSchema
 from app.service.user_service import UserService
 from app.shared.commons import validate_request
@@ -23,6 +23,7 @@ def create_user(payload):
 
     return jsonify(user_schema.dump(user)), 201
 
+
 # Update user
 @validate_request(UserUpdateRequest)
 def update_user(payload, user_id):
@@ -33,6 +34,7 @@ def update_user(payload, user_id):
     except ValueError as e:
         return jsonify({"msg": str(e)}), 409
     return jsonify(user_schema.dump(user)), 200
+
 
 # Delete user
 def delete_user(user_id):

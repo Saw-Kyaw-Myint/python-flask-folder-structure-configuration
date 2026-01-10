@@ -23,9 +23,10 @@ class User(db.Model):
     name = db.Column(db.String(100), nullable=False)
     profile = db.Column(db.String(100), nullable=True)
     email = db.Column(db.String(120), unique=True, nullable=False)
-    password = db.Column(db.String(120),nullable=False)
+    password = db.Column(db.String(120), nullable=False)
 
     posts = db.relationship("Post", back_populates="user", cascade="all, delete-orphan")
+
 
 db.timeStamp(User)
 db.softDelete(User)

@@ -2,9 +2,9 @@ from flask import Flask
 from flask_cors import CORS
 from flask_jwt_extended import JWTManager
 
-from app.exceptions.handler import register_error_handlers
-from app.extension import  db, limiter, ma, migrate
 from app.cli import register_commands
+from app.exceptions.handler import register_error_handlers
+from app.extension import db, limiter, ma, migrate
 from config.cors import CORS_CONFIG
 from config.database import DatabaseConfig
 from config.jwt import JWTConfig
@@ -35,9 +35,11 @@ jwt = JWTManager(app)
 # ///////////////// implement web /////////
 import route.api as routes
 
-@app.route('/')
+
+@app.route("/")
 def initialRoute():
     return "<h1 style='text-align: center; margin-top:250px; font-size: 60px;'>Hello World</p>"
+
 
 # /////// implement models ////////////////
 from app.models import *

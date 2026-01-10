@@ -1,6 +1,7 @@
-from pydantic import ValidationError
-from flask import request, jsonify
 from functools import wraps
+
+from flask import jsonify, request
+from pydantic import ValidationError
 
 
 def validate_request(schema):
@@ -13,8 +14,11 @@ def validate_request(schema):
                 return jsonify({"errors": format_pydantic_errors(e)}), 401
 
             return fn(payload, *args, **kwargs)
+
         return wrapper
+
     return decorator
+
 
 def format_pydantic_errors(exc: ValidationError):
     """

@@ -1,13 +1,13 @@
 from app.dao.user_dao import UserDao
-from app.service.base_service import BaseService
 from app.models import User
+from app.service.base_service import BaseService
 
-class UserService (BaseService):
+
+class UserService(BaseService):
     """Handles business logic"""
 
     def list():
         return UserDao.get_all()
-
 
     def create(payload):
         # Check unique email

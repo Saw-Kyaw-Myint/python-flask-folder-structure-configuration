@@ -1,10 +1,15 @@
 from flask import Blueprint
 
 from app.controllers.auth_controller import get_me, login_user
-from app.controllers.user_controller import create_user, get_users,delete_user,update_user
+from app.controllers.user_controller import (
+    create_user,
+    delete_user,
+    get_users,
+    update_user,
+)
 from app.extension import limiter
-from app.shared.commons import before_middleware
 from app.middleware.user_middleware import user_middleware
+from app.shared.commons import before_middleware
 
 # ///////// implement Blueprint //////////////////////
 user_bp = Blueprint("user", __name__, url_prefix="/users")
