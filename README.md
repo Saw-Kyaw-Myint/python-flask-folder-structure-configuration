@@ -61,7 +61,8 @@ $ poetry install --no-root
 ### 3. Activate the virtual environment
 
 ```
-$ poetry env activate
+$ poetry self add poetry-plugin-shell
+$ poetry shell
 
 $ poetry env list
 ```
